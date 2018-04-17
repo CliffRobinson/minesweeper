@@ -2,17 +2,32 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
+  width:6,
+  height:6,
   cells: 
     [
-      {row: 0, col: 0, isMine:false , hidden:true},
+      /*{row: 0, col: 0, isMine:false , hidden:true},
       {row: 1, col: 0, isMine:true  , hidden:true},
       {row: 0, col: 1, isMine:false , hidden:true},
-      {row: 1, col: 1, isMine:false , hidden:true}
+      {row: 1, col: 1, isMine:false , hidden:true}*/
     ],
 };
 
+function populateBoard(board){
+  for (let i = 0;i<board.width;i++){
+    for (let j = 0;j<board.height;j++){
+      let newCell = {row:i, col:j,isMine:false, hidden:true};
+      if (Math.random() >= 0.75/*25% chance*/){
+        newCell.isMine = true;
+      }
+      //console.log("Pushing:" +newCell);
+      board.cells.push(newCell);
+    }
+  }
+}
 function startGame () {
   // Don't remove this function call: it makes the game work!
+  populateBoard(board);
   for (let i=0;i<board.cells.length;i++) {
     board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
   }
@@ -30,15 +45,15 @@ function startGame () {
 // 2. Are all of the mines marked?
 function checkForWin () {
   for (let i=0;i<board.cells.length;i++) {
-    console.log("Checking Cell: "+i+", Mine is "+board.cells[i].isMine+", Marked is "+ board.cells[i].isMarked);
+    //console.log("Checking Cell: "+i+", Mine is "+board.cells[i].isMine+", Marked is "+ board.cells[i].isMarked);
     if (board.cells[i].isMine == true && board.cells[i].isMarked != true){
       console.log("You haven't won yet");
       return;
     } 
   }
-  console.log("-----");
+  //console.log("-----");
   for (let i=0;i<board.cells.length;i++) { 
-    console.log("Checking Cell: "+i+", hidden is: "+board.cells[i].hidden);
+    //console.log("Checking Cell: "+i+", hidden is: "+board.cells[i].hidden);
     if (board.cells[i].hidden == true && board.cells[i].isMine == false){
       return;
     }
