@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  width:6,
-  height:6,
+  width:3,
+  height:3,
   cells: 
     [
       /*{row: 0, col: 0, isMine:false , hidden:true},
@@ -28,16 +28,22 @@ function populateBoard(board){
 function startGame () {
   // Don't remove this function call: it makes the game work!
   populateBoard(board);
-  for (let i=0;i<board.cells.length;i++) {
-    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
-  }
+  labelSurroundingMines();
   lib.initBoard()
 
   document.addEventListener('click',checkForWin);
   document.addEventListener('contextmenu',checkForWin);
-  console.log("Length of cells is: "+board.cells.length);
-
+  //console.log("Length of cells is: "+board.cells.length);
+  document.addEventListener('click', checkForLoss);
+  document.addEventListener('contextmenu',checkForLoss);
 }
+
+function labelSurroundingMines() {
+  for (let i=0;i<board.cells.length;i++) {
+    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
+  }
+}
+
 
 // Define this function to look for a win condition:
 //
@@ -47,7 +53,7 @@ function checkForWin () {
   for (let i=0;i<board.cells.length;i++) {
     //console.log("Checking Cell: "+i+", Mine is "+board.cells[i].isMine+", Marked is "+ board.cells[i].isMarked);
     if (board.cells[i].isMine == true && board.cells[i].isMarked != true){
-      console.log("You haven't won yet");
+      //console.log("You haven't won yet");
       return;
     } 
   }
@@ -61,6 +67,35 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('You win!')
+  resetBoard();
+}
+
+function resetBoard() {
+  if (confirm("Would you like to play again?")){
+    document.getElementsByClassName('board')[0].innerHTML = '';
+    let newBoard = {
+      width:3,
+      height:3,
+      cells: [],
+    }
+
+    board = newBoard;
+
+    populateBoard(board);
+    labelSurroundingMines();
+    lib.initBoard()
+  }
+}
+
+function checkForLoss() {
+  for (let i = 0;i<board.cells.length;i++) {
+      /*if hidden!=true and isMine==true, offer the chance to restart.*/
+      
+      if (board.cells[i].isMine == true && board.cells[i].hidden == false){
+        alert("You have lost.");
+        resetBoard();
+      }
+  }
 }
 
 // Define this function to count the number of mines around the cell
