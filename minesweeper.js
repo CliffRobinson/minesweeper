@@ -36,6 +36,7 @@ function startGame () {
   //console.log("Length of cells is: "+board.cells.length);
   document.addEventListener('click', checkForLoss);
   document.addEventListener('contextmenu',checkForLoss);
+  document.getElementsByTagName('button')[0].addEventListener('click', resetBoard);
 }
 
 function labelSurroundingMines() {
@@ -67,11 +68,22 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('You win!')
-  resetBoard();
+  revealButton();
+  //resetBoard();
+}
+
+function revealButton() {
+  //console.log(document.getElementsByClassName('restart')[0].classList);
+  document.getElementsByClassName('restart')[0].classList.remove('invisible');
+  //console.log(document.getElementsByClassName('restart')[0].classList);
+}
+
+function hideButton(){
+  document.getElementsByClassName('restart')[0].classList.add('invisible');
 }
 
 function resetBoard() {
-  if (confirm("Would you like to play again?")){
+  //if (confirm("Would you like to play again?")){
     document.getElementsByClassName('board')[0].innerHTML = '';
     let newBoard = {
       width:3,
@@ -84,7 +96,8 @@ function resetBoard() {
     populateBoard(board);
     labelSurroundingMines();
     lib.initBoard()
-  }
+    hideButton();
+  //}
 }
 
 function checkForLoss() {
@@ -92,8 +105,10 @@ function checkForLoss() {
       /*if hidden!=true and isMine==true, offer the chance to restart.*/
       
       if (board.cells[i].isMine == true && board.cells[i].hidden == false){
-        alert("You have lost.");
-        resetBoard();
+        //alert("You have lost.");
+        //console.log('Should reveal ze button now');
+        revealButton();
+        //resetBoard();
       }
   }
 }
