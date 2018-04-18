@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  width:3,
-  height:3,
+  width:6,
+  height:6,
   cells: 
     [
       /*{row: 0, col: 0, isMine:false , hidden:true},
