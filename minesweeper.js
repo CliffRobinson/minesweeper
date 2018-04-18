@@ -68,9 +68,25 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('You win!')
+  document.getElementById('clap').play();
   revealButton();
   //resetBoard();
 }
+
+function checkForLoss() {
+  for (let i = 0;i<board.cells.length;i++) {
+      /*if hidden!=true and isMine==true, offer the chance to restart.*/
+      
+      if (board.cells[i].isMine == true && board.cells[i].hidden == false){
+        //alert("You have lost.");
+        //console.log('Should reveal ze button now');
+        document.getElementById('kaboom').play();
+        revealButton();
+        //resetBoard();
+      }
+  }
+}
+
 
 function revealButton() {
   //console.log(document.getElementsByClassName('restart')[0].classList);
@@ -100,18 +116,7 @@ function resetBoard() {
   //}
 }
 
-function checkForLoss() {
-  for (let i = 0;i<board.cells.length;i++) {
-      /*if hidden!=true and isMine==true, offer the chance to restart.*/
-      
-      if (board.cells[i].isMine == true && board.cells[i].hidden == false){
-        //alert("You have lost.");
-        //console.log('Should reveal ze button now');
-        revealButton();
-        //resetBoard();
-      }
-  }
-}
+
 
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
