@@ -102,8 +102,8 @@ function resetBoard() {
   //if (confirm("Would you like to play again?")){
     document.getElementsByClassName('board')[0].innerHTML = '';
     let newBoard = {
-      width:3,
-      height:3,
+      width:board.width,
+      height:board.height,
       cells: [],
     }
 
