@@ -1,0 +1,160 @@
+
+
+* {
+    padding:0px;
+    margin: 0px;
+    /*background-color: white;*/
+}
+
+body {
+    background: linear-gradient(#d4d4d4, #3a3a3a);
+
+}
+
+.container {
+   /*outline: solid red 1px;*/
+    background: white;
+    box-shadow: 5px 5px 5px rgb(37, 37, 37);
+    min-height: 1000px;
+    
+    
+}
+.row {
+    position: relative;
+    /*outline: solid green 1px;*/
+    margin-top: 0px;
+    margin-bottom:0px;
+    
+    
+}
+
+.column,
+  .columns {
+      /*outline: solid blue 1px;*/
+      
+  }
+
+  p {
+      text-align: justify;
+      /*outline: solid lime 1px;*/
+  }
+
+  img {
+    /*outline: solid salmon 1px;*/
+  }
+
+  footer{
+  
+  }
+
+  .foot{
+   /*outline: solid brown 1px;*/
+
+  }
+
+/*.header-image{
+    display:none;
+}
+
+@media (min-width: 550px) {
+    .header-image{
+        display: inherit;
+    }
+        .centered{
+        color: white;
+        
+    }
+}*/
+/* This code was intended to test disappearing the header image on small screens, but the default skeleton resizes it really well, so there's no need. */
+
+
+
+
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    
+    background-color: transparent;
+    text-align: center;
+    
+}
+
+
+
+h1 {
+    background-color: transparent;
+    
+}
+
+.button {
+    color: white;
+    background-color: grey;
+    width: 100%;
+}
+
+.illumination-inset {
+    max-width: 110px;
+    max-height: 110px;
+    filter: grayscale(100%);
+    
+}
+/*
+@media (min-width: 550px) {
+    .illumination-inset {
+        padding-right: 185px;
+    }
+}*/
+/* I wanted to add whitespace on larger screens, but for it to be dynamic, so that the text to the right of the image always aligned with the right two buttons at the top. This doesn't seem possible with just CSS.*/
+
+
+.cultural {
+    background:black;
+    color: white;
+    box-shadow: 5px 5px 5px rgb(37, 37, 37);
+
+}
+
+.technical {
+    background:white;
+    box-sizing: border-box;
+    
+    box-shadow: 5px 5px 5px rgb(37, 37, 37);
+}
+
+.QnA{
+    /*border: solid teal 1px;*/
+    
+}
+
+@media (min-width: 550px) {
+
+    /*.QnA{
+        display:flex;
+    }
+    
+    .Q {
+        min-width: 30.6666666667%;
+    }
+    
+    */
+
+    H3{
+        font-size: 1.8rem;
+    }
+
+
+
+}
+
+
+.Q {
+    background: black;
+    
+    color: white;
+    box-shadow: 5px 5px 5px rgb(37, 37, 37);
+    
+    
+}

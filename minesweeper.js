@@ -31,11 +31,11 @@ function startGame () {
   labelSurroundingMines();
   lib.initBoard()
 
-  document.addEventListener('click',checkForWin);
-  document.addEventListener('contextmenu',checkForWin);
+  document.getElementsByClassName('board')[0].addEventListener('click',checkForWin);
+  document.getElementsByClassName('board')[0].addEventListener('contextmenu',checkForWin);
   //console.log("Length of cells is: "+board.cells.length);
-  document.addEventListener('click', checkForLoss);
-  document.addEventListener('contextmenu',checkForLoss);
+  document.getElementsByClassName('board')[0].addEventListener('click', checkForLoss);
+  document.getElementsByClassName('board')[0].addEventListener('contextmenu',checkForLoss);
   document.getElementsByTagName('button')[0].addEventListener('click', resetBoard);
 }
 
@@ -69,6 +69,7 @@ function checkForWin () {
   // detected that they've won, that is!)
   lib.displayMessage('You win!')
   document.getElementById('clap').play();
+  console.log('should reveal de button now');
   revealButton();
   //resetBoard();
 }
@@ -79,7 +80,7 @@ function checkForLoss() {
       
       if (board.cells[i].isMine == true && board.cells[i].hidden == false){
         //alert("You have lost.");
-        //console.log('Should reveal ze button now');
+        console.log('Should reveal ze button now');
         document.getElementById('kaboom').play();
         revealButton();
         //resetBoard();
@@ -109,9 +110,7 @@ function resetBoard() {
 
     board = newBoard;
 
-    populateBoard(board);
-    labelSurroundingMines();
-    lib.initBoard()
+    startGame();
     hideButton();
   //}
 }

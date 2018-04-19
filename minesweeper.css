@@ -8,6 +8,7 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-image: url('./images/spider_man_2012-wallpaper-1920x1080.jpg')
 }
 
 #message, #notes {
@@ -23,6 +24,9 @@ body {
 .board {
   display: flex;
   flex-wrap: wrap;
+  padding:0px;
+  margin-left: 225px;
+  
 }
 
 .board div {
@@ -43,8 +47,28 @@ body {
   background-color: white;
 }
 
-div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+/*div.mine, div.mine:hover {
+  background: no-repeat center/100% url("images/Willem-Dafoe-0.jpg") crimson;
+}*/
+
+.w0 {
+  background: no-repeat center/100% url("images/Willem-Dafoe-0.jpg") crimson;
+}
+
+.w1 {
+  background: no-repeat center/100% url("images/Willem-Dafoe-1.jpg") crimson;
+}
+
+.w2 {
+  background: no-repeat center/100% url("images/Willem-Dafoe-2.jpg") crimson;
+}
+
+.w3 {
+  background: no-repeat center/100% url("images/Willem-Dafoe-3.jpg") crimson;
+}
+
+.w4 {
+  background: no-repeat center/100% url("images/Willem-Dafoe-4.jpg") crimson;
 }
 
 div.hidden {
@@ -56,9 +80,17 @@ div.hidden:hover {
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/100% url("images/spiderweb-edited.png") red;
 }
 
 .invisible {
   display: none;
+}
+
+.restart {
+  margin-left: 456px;
+}
+
+.container {
+  background: rgba(255,255,255,0.8);
 }
